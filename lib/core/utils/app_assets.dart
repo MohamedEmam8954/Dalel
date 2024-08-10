@@ -1,4 +1,4 @@
-class Assets {
+abstract class Assets {
   Assets._();
 
   static const String imagesOnBoarding1 = "assets/images/onBoarding1.png";

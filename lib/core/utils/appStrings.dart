@@ -2,6 +2,7 @@ abstract class AppStrings {
   static const String appName = 'Dalel';
   static const String exploreHistory =
       'Explore The history with Dalel in a smart way';
+  static const String skip = "Skip";
   static const String historyLibraries =
       'Using our app’s history libraries, you can find many historical periods';
   static const String next = 'Next';

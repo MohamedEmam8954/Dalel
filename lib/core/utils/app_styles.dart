@@ -4,7 +4,21 @@ import 'package:flutter/material.dart';
 
 abstract class AppStyles {
   static TextStyle styles64 = TextStyle(
-      fontSize: 64,
-      color: AppColors.deepBrown,
-      fontFamily: Appconstant.kPacifico);
+    fontSize: 64,
+    color: AppColors.deepBrown,
+    fontFamily: Appconstant.kPacifico,
+  );
+  static const TextStyle styles16 = TextStyle(
+    fontSize: 16,
+    fontFamily: Appconstant.kPoppins,
+  );
+  static const TextStyle styles18 = TextStyle(
+    fontSize: 18,
+    fontFamily: Appconstant.kPoppins,
+  );
+  static const TextStyle styles24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    fontFamily: Appconstant.kPoppins,
+  );
 }
