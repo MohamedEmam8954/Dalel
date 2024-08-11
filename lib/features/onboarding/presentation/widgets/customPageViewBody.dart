@@ -1,6 +1,4 @@
-import 'package:dalelapp/core/utils/appStrings.dart';
 import 'package:dalelapp/core/utils/app_styles.dart';
-import 'package:dalelapp/core/widgets/customButtom.dart';
 import 'package:dalelapp/features/onboarding/presentation/widgets/custompageindicator.dart';
 import 'package:flutter/material.dart';
 

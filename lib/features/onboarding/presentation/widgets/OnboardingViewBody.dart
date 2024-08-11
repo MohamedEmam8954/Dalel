@@ -1,6 +1,6 @@
-import 'package:dalelapp/core/utils/appStrings.dart';
-import 'package:dalelapp/core/utils/app_styles.dart';
-import 'package:dalelapp/core/widgets/customButtom.dart';
+import 'package:dalelapp/core/functions/customNavgation.dart';
+import 'package:dalelapp/core/utils/approuter.dart';
+import 'package:dalelapp/features/onboarding/presentation/widgets/customAppBar.dart';
 import 'package:dalelapp/features/onboarding/presentation/widgets/custompageView.dart';
 import 'package:flutter/material.dart';
 
@@ -14,19 +14,17 @@ class OnBoardingViewBody extends StatefulWidget {
 class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                AppStrings.skip,
-                style: AppStyles.styles16,
-              ),
+            CustomAppBar(
+              ontap: () {
+                customReplacementNavgation(context, AppRouter.kSignUp);
+              },
             ),
-            CustomPageView(),
+            const CustomPageView(),
           ],
         ),
       ),
