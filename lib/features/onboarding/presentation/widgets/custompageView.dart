@@ -44,6 +44,7 @@ class _CustomPageViewState extends State<CustomPageView> {
         SizedBox(
           height: 535,
           child: PageView.builder(
+            physics: const BouncingScrollPhysics(),
             onPageChanged: (value) {
               index = value;
               setState(() {});

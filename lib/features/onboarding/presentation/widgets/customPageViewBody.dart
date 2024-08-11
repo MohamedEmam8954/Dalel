@@ -20,9 +20,17 @@ class CustomPageViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(
-          img,
-          fit: BoxFit.fill,
+        Container(
+          height: 290,
+          width: 343,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                img,
+              ),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         const SizedBox(
           height: 15,
@@ -35,6 +43,8 @@ class CustomPageViewBody extends StatelessWidget {
           title,
           style: AppStyles.styles24,
           textAlign: TextAlign.center,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(
           height: 16,
@@ -43,6 +53,8 @@ class CustomPageViewBody extends StatelessWidget {
           subtitle,
           style: AppStyles.styles16,
           textAlign: TextAlign.center,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
