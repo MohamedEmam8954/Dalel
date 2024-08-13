@@ -1,5 +1,9 @@
+import 'package:dalelapp/core/cache/cache_helper.dart';
 import 'package:dalelapp/core/functions/customNavgation.dart';
+import 'package:dalelapp/core/services/server_Locator.dart';
+import 'package:dalelapp/core/utils/appconstant.dart';
 import 'package:dalelapp/core/utils/approuter.dart';
+import 'package:dalelapp/features/onboarding/presentation/view/function/onBoardingisVisited.dart';
 import 'package:dalelapp/features/onboarding/presentation/widgets/customAppBar.dart';
 import 'package:dalelapp/features/onboarding/presentation/widgets/custompageView.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +25,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           children: [
             CustomAppBar(
               ontap: () {
+                onBoardingisVisited();
                 customReplacementNavgation(context, AppRouter.kSignUp);
               },
             ),

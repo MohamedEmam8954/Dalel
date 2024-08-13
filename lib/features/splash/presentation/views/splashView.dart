@@ -1,7 +1,10 @@
+import 'package:dalelapp/core/cache/cache_helper.dart';
 import 'package:dalelapp/core/functions/customNavgation.dart';
+import 'package:dalelapp/core/services/server_Locator.dart';
 import 'package:dalelapp/core/utils/appStrings.dart';
 import 'package:dalelapp/core/utils/app_styles.dart';
 import 'package:dalelapp/core/utils/appcolors.dart';
+import 'package:dalelapp/core/utils/appconstant.dart';
 import 'package:dalelapp/core/utils/approuter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +19,15 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    navToSplash(context);
+    bool isboardingVisited =
+        getIt.get<CacheHelper>().getData(key: Appconstant.onBoardingVisited) ??
+            false;
+    if (isboardingVisited) {
+      delayedNav(context, AppRouter.kSignUp);
+    } else {
+      delayedNav(context, AppRouter.kOnBoarding);
+    }
+
     super.initState();
   }
 
@@ -36,8 +47,8 @@ class _SplashViewState extends State<SplashView> {
   }
 }
 
-void navToSplash(context) {
+void delayedNav(context, String path) {
   Future.delayed(const Duration(seconds: 2), () {
-    customReplacementNavgation(context, AppRouter.kOnBoarding);
+    customReplacementNavgation(context, path);
   });
 }
