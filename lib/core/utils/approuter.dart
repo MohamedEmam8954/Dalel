@@ -1,7 +1,10 @@
+import 'package:dalelapp/core/services/server_Locator.dart';
+import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authCubit.dart';
 import 'package:dalelapp/features/auth/presentation/view/siginUpView.dart';
 import 'package:dalelapp/features/auth/presentation/view/sigininView.dart';
 import 'package:dalelapp/features/onboarding/presentation/view/OnboardingView.dart';
 import 'package:dalelapp/features/splash/presentation/views/splashView.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
@@ -19,11 +22,17 @@ abstract class AppRouter {
     ),
     GoRoute(
       path: kSignUp,
-      builder: (context, state) => const SignUpView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt.get<Authcubit>(),
+        child: const SignUpView(),
+      ),
     ),
     GoRoute(
       path: kSignin,
-      builder: (context, state) => const SiginInView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => getIt.get<Authcubit>(),
+        child: const SiginInView(),
+      ),
     ),
   ]);
 }

@@ -20,9 +20,10 @@ abstract class AppStrings {
   static const String lastName = 'Last Name';
   static const String emailAddress = 'Email Address';
   static const String password = 'Password';
-  static const String agreeTerms = 'I have agree to our Terms and Condition';
+  static const String iHaveagree = 'I have agree to our';
+  static const String termsandcondition = 'Terms and Condition';
   static const String signUp = 'Sign Up';
-  static const String alreadyHaveAccount = 'Already have an account ?';
+  static const String alreadyHaveAccount = 'Already have an account ? ';
   static const String signIn = 'Sign In';
   static const String forgotPassword = 'Forgot Password ?';
   static const String dontHaveAccount = 'Don’t have an account ?';
