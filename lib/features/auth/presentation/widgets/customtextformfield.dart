@@ -4,16 +4,22 @@ import 'package:flutter/material.dart';
 
 class CustomTextformField extends StatelessWidget {
   const CustomTextformField(
-      {super.key, required this.label, this.valdiator, this.onchanged});
+      {super.key,
+      required this.label,
+      this.valdiator,
+      this.onchanged,
+      this.onFieldSubmitted});
   final String label;
   final String? Function(String?)? valdiator;
   final void Function(String)? onchanged;
+  final void Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 32, left: 24, right: 24),
       child: TextFormField(
+        onFieldSubmitted: onFieldSubmitted,
         validator: valdiator,
         onChanged: onchanged,
         decoration: InputDecoration(
