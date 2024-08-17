@@ -6,6 +6,7 @@ import 'package:dalelapp/core/utils/app_styles.dart';
 import 'package:dalelapp/core/utils/appcolors.dart';
 import 'package:dalelapp/core/utils/appconstant.dart';
 import 'package:dalelapp/core/utils/approuter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,9 @@ class _SplashViewState extends State<SplashView> {
         getIt.get<CacheHelper>().getData(key: Appconstant.onBoardingVisited) ??
             false;
     if (isboardingVisited) {
-      delayedNav(context, AppRouter.kSignUp);
+      FirebaseAuth.instance.currentUser == null
+          ? delayedNav(context, AppRouter.kSignUp)
+          : delayedNav(context, AppRouter.kHomeView);
     } else {
       delayedNav(context, AppRouter.kOnBoarding);
     }

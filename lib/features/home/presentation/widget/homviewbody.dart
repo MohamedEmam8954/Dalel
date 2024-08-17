@@ -1,3 +1,6 @@
+import 'package:dalelapp/core/functions/customNavgation.dart';
+import 'package:dalelapp/core/utils/approuter.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -6,7 +9,18 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [],
+      children: [
+        Align(
+          alignment: Alignment.centerRight,
+          child: IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              customReplacementNavgation(context, AppRouter.kSignin);
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        )
+      ],
     );
   }
 }
