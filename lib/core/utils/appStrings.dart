@@ -61,4 +61,7 @@ abstract class AppStrings {
   static const String thankYouOrder =
       'Thank you for your order here and your package will be sent to your address very quickly and fast good product';
   static const String backToHome = 'Back To Home';
+  static const String thisFieldIsRequired = 'this Field Is Required';
+  static const String accountcreatedsucess =
+      "Your Account Has Been Created Sucessfully";
 }

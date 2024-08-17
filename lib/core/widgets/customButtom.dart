@@ -3,10 +3,14 @@ import 'package:dalelapp/core/utils/appcolors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButtom extends StatelessWidget {
-  const CustomButtom({super.key, required this.onPerss, required this.title});
+  const CustomButtom(
+      {super.key,
+      required this.onPerss,
+      required this.title,
+      this.color = AppColors.primaryColor});
   final VoidCallback onPerss;
   final String title;
-
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,7 +18,7 @@ class CustomButtom extends StatelessWidget {
       height: 56,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(7),
           ),

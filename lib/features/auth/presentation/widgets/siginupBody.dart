@@ -1,4 +1,6 @@
+import 'package:dalelapp/core/functions/customNavgation.dart';
 import 'package:dalelapp/core/utils/appStrings.dart';
+import 'package:dalelapp/core/utils/approuter.dart';
 import 'package:dalelapp/features/auth/presentation/widgets/customSignUpForm.dart';
 import 'package:dalelapp/features/auth/presentation/widgets/custom_text_widget.dart';
 import 'package:dalelapp/features/auth/presentation/widgets/haveanaccount.dart';
@@ -10,35 +12,45 @@ class SignUpViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: CustomScrollView(
         slivers: [
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 108,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: CustomTextWidget(text: AppStrings.welcome),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 16,
             ),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: CustomSiginUpForm(),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: SizedBox(
               height: 16,
             ),
           ),
           SliverToBoxAdapter(
             child: HaveAnAccount(
-                text1: AppStrings.alreadyHaveAccount, text2: AppStrings.signIn),
-          )
+              text1: AppStrings.alreadyHaveAccount,
+              text2: AppStrings.signIn,
+              onTap: () {
+                customNavgation(context, AppRouter.kSignin);
+              },
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 16,
+            ),
+          ),
         ],
       ),
     );

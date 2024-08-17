@@ -10,3 +10,7 @@ class FailureAuthCubitState extends Authcubitstate {
 }
 
 class SucessAuthCubitState extends Authcubitstate {}
+
+class CheckTermsAndConditionState extends Authcubitstate {}
+
+class CheckVisbilityState extends Authcubitstate {}
