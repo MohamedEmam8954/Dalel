@@ -30,11 +30,14 @@ class CustomSiginUpForm extends StatelessWidget {
       builder: (context, state) {
         Authcubit authcubit = BlocProvider.of<Authcubit>(context);
         return Form(
-          autovalidateMode: authcubit.autovalidateMode,
+          autovalidateMode: authcubit.autovalidateModeSiginup,
           key: authcubit.signupGlobalkey,
           child: Column(
             children: [
               CustomTextformField(
+                paddingleft: 24,
+                paddingright: 24,
+                paddingtop: 32,
                 label: AppStrings.firstName,
                 onchanged: (fristName) {
                   authcubit.fristname = fristName;
@@ -47,6 +50,9 @@ class CustomSiginUpForm extends StatelessWidget {
                 },
               ),
               CustomTextformField(
+                paddingleft: 24,
+                paddingright: 24,
+                paddingtop: 32,
                 label: AppStrings.lastName,
                 onchanged: (lastName) {
                   authcubit.lastname = lastName;
@@ -59,6 +65,9 @@ class CustomSiginUpForm extends StatelessWidget {
                 },
               ),
               CustomTextformField(
+                paddingleft: 24,
+                paddingright: 24,
+                paddingtop: 32,
                 label: AppStrings.emailAddress,
                 onchanged: (emailAddress) {
                   authcubit.email = emailAddress;
@@ -71,6 +80,9 @@ class CustomSiginUpForm extends StatelessWidget {
                 },
               ),
               CustomTextformField(
+                paddingleft: 24,
+                paddingright: 24,
+                paddingtop: 32,
                 label: AppStrings.password,
                 onchanged: (password) {
                   BlocProvider.of<Authcubit>(context).password = password;
@@ -115,8 +127,8 @@ class CustomSiginUpForm extends StatelessWidget {
                             BlocProvider.of<Authcubit>(context)
                                 .createAccountWithEmailAndPassword();
                           } else {
-                            authcubit.autovalidateMode =
-                                AutovalidateMode.always;
+                            authcubit.autovalidatemodeSignUp(
+                                AutovalidateMode.always);
                           }
                         } else {
                           showToast("agree to our terms and condition");

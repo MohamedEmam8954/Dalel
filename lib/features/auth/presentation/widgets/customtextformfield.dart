@@ -12,7 +12,10 @@ class CustomTextformField extends StatelessWidget {
       this.suffixIconButn,
       this.isvisable,
       this.obscuretext = false,
-      this.suffixicon});
+      this.suffixicon,
+      this.paddingtop,
+      this.paddingleft,
+      this.paddingright});
   final String label;
   final String? Function(String?)? valdiator;
   final void Function(String)? onchanged;
@@ -21,11 +24,15 @@ class CustomTextformField extends StatelessWidget {
   final Icon? isvisable;
   final bool obscuretext;
   final bool? suffixicon;
+  final double? paddingtop, paddingleft, paddingright;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 32, left: 24, right: 24),
+      padding: EdgeInsets.only(
+          top: paddingtop ?? 0,
+          left: paddingleft ?? 0,
+          right: paddingright ?? 0),
       child: TextFormField(
           onFieldSubmitted: onFieldSubmitted,
           validator: valdiator,

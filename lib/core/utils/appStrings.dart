@@ -64,4 +64,5 @@ abstract class AppStrings {
   static const String thisFieldIsRequired = 'this Field Is Required';
   static const String accountcreatedsucess =
       "Your Account Has Been Created Sucessfully";
+  static const String welecomeback = "Welcome Back !";
 }

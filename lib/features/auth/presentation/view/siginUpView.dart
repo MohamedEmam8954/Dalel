@@ -1,4 +1,4 @@
-import 'package:dalelapp/features/auth/presentation/widgets/siginupBody.dart';
+import 'package:dalelapp/features/auth/presentation/widgets/signupBody.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

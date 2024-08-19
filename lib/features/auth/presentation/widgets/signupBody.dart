@@ -42,7 +42,7 @@ class SignUpViewBody extends StatelessWidget {
               text1: AppStrings.alreadyHaveAccount,
               text2: AppStrings.signIn,
               onTap: () {
-                customNavgation(context, AppRouter.kSignin);
+                customReplacementNavgation(context, AppRouter.kSignin);
               },
             ),
           ),

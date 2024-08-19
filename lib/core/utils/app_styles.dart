@@ -3,7 +3,7 @@ import 'package:dalelapp/core/utils/appconstant.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppStyles {
-  static TextStyle styles64 = TextStyle(
+  static TextStyle styles64 = const TextStyle(
     fontSize: 64,
     color: AppColors.deepBrown,
     fontFamily: Appconstant.kPacifico,
@@ -31,4 +31,6 @@ abstract class AppStyles {
     fontWeight: FontWeight.w400,
     fontFamily: Appconstant.kPoppins,
   );
+  static const TextStyle styles32 = TextStyle(
+      fontSize: 32, fontWeight: FontWeight.w700, fontFamily: "SairaCondensed");
 }

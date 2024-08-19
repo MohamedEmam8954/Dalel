@@ -1,4 +1,3 @@
-import 'package:dalelapp/core/services/server_Locator.dart';
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authCubit.dart';
 import 'package:dalelapp/features/auth/presentation/view/siginUpView.dart';
 import 'package:dalelapp/features/auth/presentation/view/sigininView.dart';

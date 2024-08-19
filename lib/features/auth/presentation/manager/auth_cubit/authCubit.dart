@@ -14,7 +14,9 @@ class Authcubit extends Cubit<Authcubitstate> {
   bool checktermsandcondition = false;
   bool visbile = false;
   var signupGlobalkey = GlobalKey<FormState>();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  var signInGlobalkey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateModeSiginup = AutovalidateMode.disabled;
+  AutovalidateMode autovalidateModeSignIn = AutovalidateMode.disabled;
   createAccountWithEmailAndPassword() async {
     try {
       emit(LoadingAuthCubitState());
@@ -46,5 +48,37 @@ class Authcubit extends Cubit<Authcubitstate> {
   checkVisbility({required bool isvisible}) {
     visbile = isvisible;
     emit(CheckVisbilityState());
+  }
+
+  autovalidatemodeSignUp(AutovalidateMode textvalidate) {
+    autovalidateModeSiginup = textvalidate;
+    emit(AutoValidatedModeStateSignUp());
+  }
+
+  autovalidatemodeSignIN(AutovalidateMode textvalidate) {
+    autovalidateModeSignIn = textvalidate;
+    emit(AutoValidatedModeStateSignin());
+  }
+
+  signInWithEmailAndPassword() async {
+    try {
+      emit(SignInLoadingAuthCubitState());
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email!, password: password!);
+      emit(SignInSucessAuthCubitState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emit(SignInFailureAuthCubitState(
+            errorMessage: 'No user found for that email.'));
+      }
+      if (e.code == "invalid-credential") {
+        emit(
+          SignInFailureAuthCubitState(
+              errorMessage: "Invalid email or password"),
+        );
+      }
+    } catch (e) {
+      emit(FailureAuthCubitState(errorMessage: e.toString()));
+    }
   }
 }
