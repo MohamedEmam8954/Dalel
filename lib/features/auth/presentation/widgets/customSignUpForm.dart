@@ -22,7 +22,7 @@ class CustomSiginUpForm extends StatelessWidget {
       listener: (context, state) {
         if (state is SucessAuthCubitState) {
           showToast(AppStrings.accountcreatedsucess);
-          customReplacementNavgation(context, AppRouter.kHomeView);
+          customReplacementNavgation(context, AppRouter.kSignin);
         } else if (state is FailureAuthCubitState) {
           showToast(state.errorMessage);
         }

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:dalelapp/core/utils/appStrings.dart';
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authcubitstate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +16,18 @@ class Authcubit extends Cubit<Authcubitstate> {
   bool visbile = false;
   var signupGlobalkey = GlobalKey<FormState>();
   var signInGlobalkey = GlobalKey<FormState>();
+  var forgetPassGlobalKey = GlobalKey<FormState>();
+  var currentUser = FirebaseAuth.instance.currentUser;
   AutovalidateMode autovalidateModeSiginup = AutovalidateMode.disabled;
   AutovalidateMode autovalidateModeSignIn = AutovalidateMode.disabled;
+  AutovalidateMode autovalidateModeForgetPass = AutovalidateMode.disabled;
   createAccountWithEmailAndPassword() async {
     try {
       emit(LoadingAuthCubitState());
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email!, password: password!);
+      await verifiyEmail(userCredential);
+
       emit(SucessAuthCubitState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -30,10 +36,19 @@ class Authcubit extends Cubit<Authcubitstate> {
       } else if (e.code == 'email-already-in-use') {
         emit(FailureAuthCubitState(
             errorMessage: 'The account already exists for that email.'));
+      } else if (e.code == "invalid-email") {
+        emit(FailureAuthCubitState(errorMessage: 'Invalid Email'));
+      } else {
+        emit(FailureAuthCubitState(
+            errorMessage: 'There is An Error With ${e.code}'));
       }
     } catch (e) {
       emit(FailureAuthCubitState(errorMessage: e.toString()));
     }
+  }
+
+  Future<void> verifiyEmail(UserCredential userCredential) async {
+    await userCredential.user!.sendEmailVerification();
   }
 
   checkTermsAndCondition({required bool check}) {
@@ -63,9 +78,14 @@ class Authcubit extends Cubit<Authcubitstate> {
   signInWithEmailAndPassword() async {
     try {
       emit(SignInLoadingAuthCubitState());
-      await FirebaseAuth.instance
+      UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email!, password: password!);
-      emit(SignInSucessAuthCubitState());
+
+      if (userCredential.user!.emailVerified) {
+        emit(SignInSucessAuthCubitState());
+      } else {
+        emit(CheckYourEmailState(message: AppStrings.sendEmailVerification));
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         emit(SignInFailureAuthCubitState(
@@ -78,7 +98,28 @@ class Authcubit extends Cubit<Authcubitstate> {
         );
       }
     } catch (e) {
-      emit(FailureAuthCubitState(errorMessage: e.toString()));
+      emit(SignInFailureAuthCubitState(errorMessage: e.toString()));
     }
+  }
+
+  resetPasswordWithLink() async {
+    try {
+      emit(ForgetPasswordLoadingAuthCubitState());
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email!);
+      emit(ForgetPasswordSucessAuthCubitState());
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "invalid-email") {
+        emit(
+            ForgetPasswordFailureAuthCubitState(errorMessage: 'Invalid Email'));
+      } else {
+        emit(ForgetPasswordFailureAuthCubitState(
+            errorMessage: "There is an Error With ${e.code}"));
+      }
+    }
+  }
+
+  autovalidatemodeForgetPass(AutovalidateMode textvalidate) {
+    autovalidateModeForgetPass = textvalidate;
+    emit(AutoValidatedModeStateForgetPass());
   }
 }

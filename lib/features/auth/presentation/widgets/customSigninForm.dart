@@ -9,7 +9,7 @@ import 'package:dalelapp/core/widgets/customButtom.dart';
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authCubit.dart';
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authcubitstate.dart';
 import 'package:dalelapp/features/auth/presentation/widgets/customtextformfield.dart';
-import 'package:dalelapp/features/auth/presentation/widgets/forgetpassword.dart';
+import 'package:dalelapp/features/auth/presentation/widgets/forgetpasswordbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +25,8 @@ class CustomSignInForm extends StatelessWidget {
           customReplacementNavgation(context, AppRouter.kHomeView);
         } else if (state is SignInFailureAuthCubitState) {
           showToast(state.errorMessage);
+        } else if (state is CheckYourEmailState) {
+          showToast(state.message);
         }
       },
       builder: (context, state) {
@@ -57,7 +59,7 @@ class CustomSignInForm extends StatelessWidget {
                   paddingtop: 32,
                   label: AppStrings.password,
                   onchanged: (password) {
-                    BlocProvider.of<Authcubit>(context).password = password;
+                    authcubit.password = password;
                   },
                   valdiator: (value) {
                     if (value?.isEmpty ?? true) {
@@ -78,13 +80,15 @@ class CustomSignInForm extends StatelessWidget {
                   height: 16,
                 ),
                 //! fill the field
-                ForgetPassword(
-                  onpressed: () {},
+                ForgetPasswordButton(
+                  onpressed: () {
+                    customNavgation(context, AppRouter.kForgetPaasword);
+                  },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                state is LoadingAuthCubitState
+                state is SignInLoadingAuthCubitState
                     ? const CustomLoadingWidget()
                     : CustomButtom(
                         onPerss: () {

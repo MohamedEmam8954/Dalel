@@ -63,6 +63,12 @@ abstract class AppStrings {
   static const String backToHome = 'Back To Home';
   static const String thisFieldIsRequired = 'this Field Is Required';
   static const String accountcreatedsucess =
-      "Your Account Has Been Created Sucessfully";
+      "Your Account Has Been Created check Your Email";
   static const String welecomeback = "Welcome Back !";
+  static const String sendEmailVerification = "Please Verify Your Account";
+  static const String changeYourPassword =
+      "Please Verify Your Account To Change Your Password";
+  static const String registerYouremailForgetPass =
+      "Enter your registered email below to receivepassword reset instruction";
+  static const String resetPasswordLink = "send Reset Password Link";
 }

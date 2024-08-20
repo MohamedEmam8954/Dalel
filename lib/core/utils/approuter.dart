@@ -1,4 +1,5 @@
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authCubit.dart';
+import 'package:dalelapp/features/auth/presentation/view/forgetPass.dart';
 import 'package:dalelapp/features/auth/presentation/view/siginUpView.dart';
 import 'package:dalelapp/features/auth/presentation/view/sigininView.dart';
 import 'package:dalelapp/features/home/presentation/view/homeview.dart';
@@ -12,6 +13,7 @@ abstract class AppRouter {
   static const String kSignUp = "/signup";
   static const String kSignin = "/signin";
   static const String kHomeView = "/homeView";
+  static const String kForgetPaasword = "/ForgetPassword";
 
   static GoRouter goRoute = GoRouter(routes: [
     GoRoute(
@@ -40,5 +42,11 @@ abstract class AppRouter {
       path: kHomeView,
       builder: (context, state) => const HomeView(),
     ),
+    GoRoute(
+        path: kForgetPaasword,
+        builder: (context, state) => BlocProvider(
+              create: (context) => Authcubit(),
+              child: const ForgetpassView(),
+            ))
   ]);
 }

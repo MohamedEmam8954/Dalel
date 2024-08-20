@@ -27,3 +27,21 @@ class SignInFailureAuthCubitState extends Authcubitstate {
 }
 
 class SignInSucessAuthCubitState extends Authcubitstate {}
+
+class CheckYourEmailState extends Authcubitstate {
+  final String message;
+
+  CheckYourEmailState({required this.message});
+}
+
+class ForgetPasswordLoadingAuthCubitState extends Authcubitstate {}
+
+class ForgetPasswordSucessAuthCubitState extends Authcubitstate {}
+
+class ForgetPasswordFailureAuthCubitState extends Authcubitstate {
+  final String errorMessage;
+
+  ForgetPasswordFailureAuthCubitState({required this.errorMessage});
+}
+
+class AutoValidatedModeStateForgetPass extends Authcubitstate {}

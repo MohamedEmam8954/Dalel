@@ -1,7 +1,11 @@
-abstract class Assets {
+// ignore_for_file: prefer_single_quotes
+class Assets {
   Assets._();
 
+  static const String imagesForgetPass = "assets/images/forgetPass.png";
+
   static const String imagesOnBoarding1 = "assets/images/onBoarding1.png";
+
   static const String imagesOnBoarding2 = "assets/images/onBoarding2.png";
 
   static const String imagesOnBoarding3 = "assets/images/onBoarding3.png";
