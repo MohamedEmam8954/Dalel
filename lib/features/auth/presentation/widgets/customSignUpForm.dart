@@ -120,11 +120,11 @@ class CustomSiginUpForm extends StatelessWidget {
                       color: authcubit.checktermsandcondition
                           ? AppColors.primaryColor
                           : AppColors.grey,
-                      onPerss: () {
+                      onPerss: () async {
                         if (authcubit.checktermsandcondition == true) {
                           if (authcubit.signupGlobalkey.currentState!
                               .validate()) {
-                            BlocProvider.of<Authcubit>(context)
+                            await BlocProvider.of<Authcubit>(context)
                                 .createAccountWithEmailAndPassword();
                           } else {
                             authcubit.autovalidatemodeSignUp(

@@ -23,10 +23,10 @@ abstract class AppStrings {
   static const String iHaveagree = 'I have agree to our';
   static const String termsandcondition = 'Terms and Condition';
   static const String signUp = 'Sign Up';
-  static const String alreadyHaveAccount = 'Already have an account ? ';
+  static const String alreadyHaveAccount = 'Already have an account? ';
   static const String signIn = 'Sign In';
   static const String forgotPassword = 'Forgot Password ?';
-  static const String dontHaveAccount = 'Don’t have an account ?';
+  static const String dontHaveAccount = 'Don’t have an account? ';
   static const String historicalPeriods = 'Historical periods';
   static const String historicalCharacters = 'Historical Characters';
   static const String historicalSouvenirs = 'Historical Souvenirs';

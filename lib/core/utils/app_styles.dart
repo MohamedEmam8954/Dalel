@@ -32,5 +32,7 @@ abstract class AppStyles {
     fontFamily: Appconstant.kPoppins,
   );
   static const TextStyle styles32 = TextStyle(
-      fontSize: 32, fontWeight: FontWeight.w700, fontFamily: "SairaCondensed");
+      fontSize: 32,
+      fontWeight: FontWeight.w700,
+      fontFamily: Appconstant.kPacifico);
 }

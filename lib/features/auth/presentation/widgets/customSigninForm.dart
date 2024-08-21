@@ -89,10 +89,10 @@ class CustomSignInForm extends StatelessWidget {
                 state is SignInLoadingAuthCubitState
                     ? const CustomLoadingWidget()
                     : CustomButtom(
-                        onPerss: () {
+                        onPerss: () async {
                           if (authcubit.signInGlobalkey.currentState!
                               .validate()) {
-                            authcubit.signInWithEmailAndPassword();
+                            await authcubit.signInWithEmailAndPassword();
                           } else {
                             authcubit.autovalidatemodeSignIN(
                                 AutovalidateMode.always);

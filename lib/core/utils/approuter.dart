@@ -1,5 +1,5 @@
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authCubit.dart';
-import 'package:dalelapp/features/auth/presentation/view/forgetPass.dart';
+import 'package:dalelapp/features/auth/presentation/view/forgetPassView.dart';
 import 'package:dalelapp/features/auth/presentation/view/siginUpView.dart';
 import 'package:dalelapp/features/auth/presentation/view/sigininView.dart';
 import 'package:dalelapp/features/home/presentation/view/homeview.dart';

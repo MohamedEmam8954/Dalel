@@ -22,7 +22,7 @@ class Authcubit extends Cubit<Authcubitstate> {
   AutovalidateMode autovalidateModeSiginup = AutovalidateMode.disabled;
   AutovalidateMode autovalidateModeSignIn = AutovalidateMode.disabled;
   AutovalidateMode autovalidateModeForgetPass = AutovalidateMode.disabled;
-  createAccountWithEmailAndPassword() async {
+  Future<void> createAccountWithEmailAndPassword() async {
     try {
       emit(LoadingAuthCubitState());
       UserCredential userCredential = await FirebaseAuth.instance
@@ -32,20 +32,24 @@ class Authcubit extends Cubit<Authcubitstate> {
 
       emit(SucessAuthCubitState());
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        emit(FailureAuthCubitState(
-            errorMessage: 'The password provided is too weak.'));
-      } else if (e.code == 'email-already-in-use') {
-        emit(FailureAuthCubitState(
-            errorMessage: 'The account already exists for that email.'));
-      } else if (e.code == "invalid-email") {
-        emit(FailureAuthCubitState(errorMessage: 'Invalid Email'));
-      } else {
-        emit(FailureAuthCubitState(
-            errorMessage: 'There is An Error With ${e.code}'));
-      }
+      _firebaseHandelExcepetion(e);
     } catch (e) {
       emit(FailureAuthCubitState(errorMessage: e.toString()));
+    }
+  }
+
+  void _firebaseHandelExcepetion(FirebaseAuthException e) {
+    if (e.code == 'weak-password') {
+      emit(FailureAuthCubitState(
+          errorMessage: 'The password provided is too weak.'));
+    } else if (e.code == 'email-already-in-use') {
+      emit(FailureAuthCubitState(
+          errorMessage: 'The account already exists for that email.'));
+    } else if (e.code == "invalid-email") {
+      emit(FailureAuthCubitState(errorMessage: 'Invalid Email'));
+    } else {
+      emit(FailureAuthCubitState(
+          errorMessage: 'There is An Error With ${e.code}'));
     }
   }
 
@@ -53,7 +57,7 @@ class Authcubit extends Cubit<Authcubitstate> {
     await userCredential.user!.sendEmailVerification();
   }
 
-  checkTermsAndCondition({required bool check}) {
+  void checkTermsAndCondition({required bool check}) {
     try {
       checktermsandcondition = check;
       emit(CheckTermsAndConditionState());
@@ -62,22 +66,22 @@ class Authcubit extends Cubit<Authcubitstate> {
     }
   }
 
-  checkVisbility({required bool isvisible}) {
+  void checkVisbility({required bool isvisible}) {
     visbile = isvisible;
     emit(CheckVisbilityState());
   }
 
-  autovalidatemodeSignUp(AutovalidateMode textvalidate) {
+  void autovalidatemodeSignUp(AutovalidateMode textvalidate) {
     autovalidateModeSiginup = textvalidate;
     emit(AutoValidatedModeStateSignUp());
   }
 
-  autovalidatemodeSignIN(AutovalidateMode textvalidate) {
+  void autovalidatemodeSignIN(AutovalidateMode textvalidate) {
     autovalidateModeSignIn = textvalidate;
     emit(AutoValidatedModeStateSignin());
   }
 
-  signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInLoadingAuthCubitState());
       UserCredential userCredential = await FirebaseAuth.instance
@@ -104,7 +108,7 @@ class Authcubit extends Cubit<Authcubitstate> {
     }
   }
 
-  resetPasswordWithLink() async {
+  Future<void> resetPasswordWithLink() async {
     try {
       emit(ForgetPasswordLoadingAuthCubitState());
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email!);
@@ -120,14 +124,14 @@ class Authcubit extends Cubit<Authcubitstate> {
     }
   }
 
-  autovalidatemodeForgetPass(AutovalidateMode textvalidate) {
+  void autovalidatemodeForgetPass(AutovalidateMode textvalidate) {
     autovalidateModeForgetPass = textvalidate;
     emit(AutoValidatedModeStateForgetPass());
   }
 
-  addUserProfile() {
+  Future<void> addUserProfile() async {
     CollectionReference user = FirebaseFirestore.instance.collection("Users");
-    user.add({
+    await user.add({
       "frist_Name": fristname,
       "last_Name": lastname,
       "Email": email,

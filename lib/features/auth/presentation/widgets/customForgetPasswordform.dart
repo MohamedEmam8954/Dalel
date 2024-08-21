@@ -53,10 +53,10 @@ class CustomForgetpassForm extends StatelessWidget {
                 state is ForgetPasswordLoadingAuthCubitState
                     ? const CustomLoadingWidget()
                     : CustomButtom(
-                        onPerss: () {
+                        onPerss: () async {
                           if (authcubit.forgetPassGlobalKey.currentState!
                               .validate()) {
-                            authcubit.resetPasswordWithLink();
+                            await authcubit.resetPasswordWithLink();
                           } else {
                             authcubit.autovalidatemodeForgetPass(
                                 AutovalidateMode.always);
