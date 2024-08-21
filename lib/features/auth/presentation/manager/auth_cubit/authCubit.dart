@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dalelapp/core/utils/appStrings.dart';
 import 'package:dalelapp/features/auth/presentation/manager/auth_cubit/authcubitstate.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -26,6 +27,7 @@ class Authcubit extends Cubit<Authcubitstate> {
       emit(LoadingAuthCubitState());
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email!, password: password!);
+      addUserProfile();
       await verifiyEmail(userCredential);
 
       emit(SucessAuthCubitState());
@@ -121,5 +123,14 @@ class Authcubit extends Cubit<Authcubitstate> {
   autovalidatemodeForgetPass(AutovalidateMode textvalidate) {
     autovalidateModeForgetPass = textvalidate;
     emit(AutoValidatedModeStateForgetPass());
+  }
+
+  addUserProfile() {
+    CollectionReference user = FirebaseFirestore.instance.collection("Users");
+    user.add({
+      "frist_Name": fristname,
+      "last_Name": lastname,
+      "Email": email,
+    });
   }
 }

@@ -1,8 +1,6 @@
 import 'package:dalelapp/core/functions/customNavgation.dart';
 import 'package:dalelapp/core/functions/customshowToast.dart';
 import 'package:dalelapp/core/utils/appStrings.dart';
-import 'package:dalelapp/core/utils/app_styles.dart';
-import 'package:dalelapp/core/utils/appcolors.dart';
 import 'package:dalelapp/core/utils/approuter.dart';
 import 'package:dalelapp/core/utils/customLoadingWidget.dart';
 import 'package:dalelapp/core/widgets/customButtom.dart';
