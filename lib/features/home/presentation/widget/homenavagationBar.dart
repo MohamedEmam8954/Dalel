@@ -22,7 +22,7 @@ class _HomeNavagationBarState extends State<HomeNavagationBar> {
         return Scaffold(
           bottomNavigationBar: Container(
             width: double.infinity,
-            height: 80,
+            height: 60,
             decoration: const BoxDecoration(
               color: AppColors.primaryColor,
               borderRadius: BorderRadius.only(

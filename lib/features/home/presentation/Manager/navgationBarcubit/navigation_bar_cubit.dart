@@ -16,7 +16,7 @@ class NavigationBarCubit extends Cubit<NavigationBarState> {
   int currentindex = 0;
   List<String> icons = [
     Assets.imagesHome,
-    Assets.imagesshoppingcart,
+    Assets.imagesShopingCart,
     Assets.imagesSearch,
     Assets.imagesUser,
   ];

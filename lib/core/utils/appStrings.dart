@@ -32,6 +32,8 @@ abstract class AppStrings {
   static const String historicalSouvenirs = 'Historical Souvenirs';
   static const String ancientEgyptWars = 'Ancient Egypt Wars';
   static const String aboutAncientEgypt = 'About Ancient Egypt';
+  static const String ancientEgypt = 'Ancient Egypt';
+
   static const String recommendations = 'Recommendations';
   static const String saladinWars = 'Saladin Wars';
   static const String searchDeepHistory = 'Search deep into the history';

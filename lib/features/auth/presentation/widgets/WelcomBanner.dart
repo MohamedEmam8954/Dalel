@@ -26,7 +26,7 @@ class WelcomeBanner extends StatelessWidget {
           bottom: 0,
           right: 0,
           child: SvgPicture.asset(
-            Assets.imagesVector1,
+            Assets.welcomeBanner1,
             fit: BoxFit.fill,
             width: 176.72,
             height: 128.58,
@@ -36,7 +36,7 @@ class WelcomeBanner extends StatelessWidget {
           bottom: 0,
           left: 0,
           child: SvgPicture.asset(
-            Assets.imagesVector,
+            Assets.welcomeBanner2,
             fit: BoxFit.fill,
             width: 176.72,
             height: 128.58,
