@@ -20,7 +20,7 @@ class CustomSignInForm extends StatelessWidget {
       listener: (context, state) {
         if (state is SignInSucessAuthCubitState) {
           showToast(AppStrings.welecomeback);
-          customReplacementNavgation(context, AppRouter.kHomeView);
+          customReplacementNavgation(context, AppRouter.kHomeNavgationBar);
         } else if (state is SignInFailureAuthCubitState) {
           showToast(state.errorMessage);
         } else if (state is CheckYourEmailState) {

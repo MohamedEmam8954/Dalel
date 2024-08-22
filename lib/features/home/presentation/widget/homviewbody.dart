@@ -19,6 +19,9 @@ class HomeViewBody extends StatelessWidget {
             },
             icon: const Icon(Icons.logout),
           ),
+        ),
+        Center(
+          child: Text("Home"),
         )
       ],
     );
