@@ -1,16 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dalelapp/core/utils/app_styles.dart';
 import 'package:dalelapp/core/utils/appcolors.dart';
+import 'package:dalelapp/features/home/data/models/HistoricalPeroidmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HistoricalperiodItem extends StatelessWidget {
-  const HistoricalperiodItem(
-      {super.key, required this.text, required this.img});
-  final String text, img;
+  const HistoricalperiodItem({
+    super.key,
+    required this.historicalPeroidModel,
+  });
+  final HistoricalPeroidModel historicalPeroidModel;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 164,
-      height: 96,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(5),
@@ -31,7 +36,7 @@ class HistoricalperiodItem extends StatelessWidget {
               width: 63,
               height: 48,
               child: Text(
-                text,
+                historicalPeroidModel.acient,
                 style: AppStyles.kpoppinsw500styles16,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -41,15 +46,19 @@ class HistoricalperiodItem extends StatelessWidget {
             const SizedBox(
               width: 22,
             ),
-            Container(
-              width: 47,
-              height: 64,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(img),
-                ),
-              ),
-            )
+            SizedBox(
+                width: 47,
+                height: 64,
+                child: CachedNetworkImage(
+                  imageUrl: historicalPeroidModel.acientImage,
+                  placeholder: (context, url) => Shimmer.fromColors(
+                      child: Container(
+                        width: 74,
+                        height: 64,
+                      ),
+                      baseColor: Colors.grey,
+                      highlightColor: Colors.white),
+                ))
           ],
         ),
       ),

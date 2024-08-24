@@ -1,7 +1,7 @@
-import 'package:dalelapp/features/home/presentation/widget/home_section/HistoricalCharacterSection.dart';
-import 'package:dalelapp/features/home/presentation/widget/home_section/HistoricalPeriodsSection.dart';
-import 'package:dalelapp/features/home/presentation/widget/home_section/HistoricalSouvenirsSection.dart';
-import 'package:dalelapp/features/home/presentation/widget/home_section/HomeAppBarSection.dart';
+import 'package:dalelapp/features/home/presentation/widget/homeView_section/HistoricalCharacterSection.dart';
+import 'package:dalelapp/features/home/presentation/widget/homeView_section/HistoricalPeriodsSection.dart';
+import 'package:dalelapp/features/home/presentation/widget/homeView_section/HistoricalSouvenirsSection.dart';
+import 'package:dalelapp/features/home/presentation/widget/homeView_section/HomeAppBarSection.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
